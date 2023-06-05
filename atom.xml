@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-06-05T16:02:14.424Z</updated>
+  <updated>2023-06-05T19:25:08.918Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Intution behind generating function(OGF)</title>
+    <link href="http://example.com/2023/06/06/OGF/"/>
+    <id>http://example.com/2023/06/06/OGF/</id>
+    <published>2023-06-06T01:07:27.000Z</published>
+    <updated>2023-06-05T19:25:08.918Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Intution-behind-generating-function-OGF"><a href="#Intution-behind-generating-function-OGF" class="headerlink" title="Intution behind generating function(OGF)"></a>Intution behind generating function(OGF)</h1><p>In this blog, I will show how to formulate various kind of counting problems into polynomial form, and the powerfulness of this method.</p><p>Let’s see the following problem</p><blockquote><p>Problem: Given sets $A &#x3D; {2, 3}, B &#x3D; {2, 4}, C &#x3D; {3, 5, 7}$, count the number of ways to choose one element from each set sum up to $n$.</p></blockquote><blockquote><p>Answer: $[x^n](x^2 + x^3)(x^2 + x^4)(x^3 + x^5 + x^7)$</p></blockquote><h4 id="remark-x-n-f-means-taking-the-coefficient-of-n-th-term-of-polynomial-f-For-example-x-4-x-2-3x-4-5x-5-x3D-3-since-the-4-th-term-of-polynomial-is-3x-4"><a href="#remark-x-n-f-means-taking-the-coefficient-of-n-th-term-of-polynomial-f-For-example-x-4-x-2-3x-4-5x-5-x3D-3-since-the-4-th-term-of-polynomial-is-3x-4" class="headerlink" title="remark: $[x^n]f$ means taking the coefficient of $n$-th term of polynomial $f$. For example, $[x^4](x^2 + 3x^4 + 5x^5) &#x3D; 3$ since the $4$-th term of polynomial is $3x^4$."></a>remark: $[x^n]f$ means taking the coefficient of $n$-th term of polynomial $f$. For example, $[x^4](x^2 + 3x^4 + 5x^5) &#x3D; 3$ since the $4$-th term of polynomial is $3x^4$.</h4><p>There are few ways to think about this, one is using distributive law to argue that the result is  equal to</p><ul><li>first choose $x^2$ or $x^3$</li><li>then choose(multiply with) $x^2$ or $x^4$</li><li>then choose(multiply with) $x^3$ or $x^5$ or $x^7$</li><li>finally sum up results for all the choices, then  the number of ways to get $x^{a + b + c} &#x3D; x^n$ is equal to the number of ways to choose elements $a, b, c$ from each set such that $a + b + c &#x3D; n$.</li></ul><p>But I prefer another way to think about it, that is, think the whole polynomial as the process of DP. </p><p>There is an obvious way to fomulate this problem in DP.</p><p>$DP[3][n]: \text{consider first i sets, the number of ways to have sum j}$<br>$\text{Base case: } DP[0][0] &#x3D; 1$<br>$\text{Transitions: }$<br>$DP[0][j] \rightarrow DP[1][j + 2], DP[1][j + 3]$<br>$DP[1][j] \rightarrow DP[2][j + 2], DP[2][j + 4]$<br>$DP[2][j] \rightarrow DP[3][j + 3], DP[3][j + 5], DP[3][j + 7]$</p><p>And get back to the polynomial form, let’s see how each component is related to the DP formula.</p><p>First we have a $1$ as the base case. $\leftrightarrow$ $DP[0] &#x3D; {1}$</p><p>Then we multiply $1$ with $(x^2 + x^3)$, giving us $(x^2 + x^3)$. $\leftrightarrow$ $DP[1] &#x3D; {0, 0, 1, 1}$</p><p>which is equivalent to transitions from $DP[0][0]$ to $DP[1][0 + 2]$ and $DP[1][0 + 3]$</p><p>Then multiply $(x^2 + x^3)$ with $(x^2 + x^4)$, giving us $(x^4 + x^5 + x^6 + x^7)$ $\leftrightarrow$ $DP[2] &#x3D; {0, 0, 0, 0, 1, 1, 1, 1}$<br>multiply $x^2$ with $x^2$ means transition $DP[1][2] \rightarrow DP[2][2 + 2]$.<br>And multiply $x^2$ with $x^4$ means transition $DP[1][2] \rightarrow DP[2][2 + 4]$ etc…</p><p>We can think multiplying with a polynomial $(x^a + x^b + x^c…)$ as transitions<br>$$<br>DP[i][j] \rightarrow DP[i + 1][j + a], DP[i + 1][j + b], DP[i + 1][j + c]…<br>$$</p><p>then the above answer would become quite intutive.</p><p>Under construction——————————————</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Intution-behind-generating-function-OGF&quot;&gt;&lt;a href=&quot;#Intution-behind-generating-function-OGF&quot; class=&quot;headerlink&quot; title=&quot;Intution behin</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="http://example.com/2023/06/05/hello-world/"/>
     <id>http://example.com/2023/06/05/hello-world/</id>
-    <published>2023-06-05T16:02:14.424Z</published>
-    <updated>2023-06-05T16:02:14.424Z</updated>
+    <published>2023-06-05T19:25:08.918Z</published>
+    <updated>2023-06-05T19:25:08.918Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
