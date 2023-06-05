@@ -103,3 +103,6 @@ theme: hexo-theme-Claudia
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+# math
+mathjax: true
