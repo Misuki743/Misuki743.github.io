@@ -5,6 +5,8 @@ tags:
 mathjax: true
 ---
 
+------------------------------------------Under construction------------------------------------------
+
 # Intution behind generating function(OGF)
 
 In this blog, I will show how to formulate various kind of counting problems into polynomial form, and the powerfulness of this method.
@@ -15,7 +17,7 @@ Let's see the following problem
 
 > Answer: $\[x^n\](x^2 + x^3)(x^2 + x^4)(x^3 + x^5 + x^7)$
 
-#### remark: $[x^n]f$ means taking the coefficient of $n$-th term of polynomial $f$. For example, $\[x^4\](x^2 + 3x^4 + 5x^5) = 3$ since the $4$-th term of polynomial is $3x^4$.
+remark: $[x^n]f$ means taking the coefficient of $n$-th term of polynomial $f$. For example, $\[x^4\](x^2 + 3x^4 + 5x^5) = 3$ since the $4$-th term of polynomial is $3x^4$.
 
 There are few ways to think about this, one is using distributive law to argue that the result is  equal to
 
@@ -52,6 +54,4 @@ $$
 DP[i][j] \rightarrow DP[i + 1][j + a], DP[i + 1][j + b], DP[i + 1][j + c]...
 $$
 
-then the above answer would become quite intutive.
-
-Under construction------------------------------------------
+then it will become quite easy to come up with the respective polynomial for counting problems.
